@@ -30,7 +30,7 @@ class Aboutsection extends StatelessWidget {
 
           Widget whatIDoWidget() => WhatIDoSection()
               .animate()
-              .fadeIn(duration: 600.ms, delay: 400.ms)
+              .fadeIn(duration: 600.ms, delay: 800.ms)
               .slideX(begin: isMobile ? 0.0 : 0.2, curve: Curves.easeOut);
 
           if (isMobile) {

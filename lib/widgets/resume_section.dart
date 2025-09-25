@@ -34,7 +34,11 @@ class _ResumeSectionState extends State<ResumeSection> {
     final ismobile = MediaQuery.of(context).size.width < 600;
 
     return Container(
-      color: const Color(0xFFFAF9F6),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: const Color(0xFFFAF9F6),
+      ),
+
       padding: ismobile
           ? EdgeInsets.all(1)
           : EdgeInsets.symmetric(vertical: 40, horizontal: 20),
@@ -101,26 +105,12 @@ class _ResumeSectionState extends State<ResumeSection> {
           ),
         ),
         const SizedBox(height: 12),
-        Text(
-          "Here are some quotes and thoughts that inspire my work, "
-          "along with my experiences that shape my journey.",
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: Colors.grey[700],
-            fontSize: bodyFontSize,
-            height: 1.5,
-            fontFamily: 'Aeonik',
-          ),
+
+        QuoteCard(
+          text:
+              "My journey into tech began with a fascination for creating engaging digital experiences. Today, I specialize in building intuitive mobile applications and making them smarter with artificial intelligence. I enjoy solving complex challenges to create products that are not only powerful but also simple and enjoyable for everyone to use.I thrive in collaborative environments where I can work with a team to bring ambitious ideas to life.",
         ),
-        const SizedBox(height: 20),
-        const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            QuoteCard(text: "Creativity is intelligence having fun."),
-            SizedBox(height: 12),
-            QuoteCard(text: "Design is thinking made visual."),
-          ],
-        ),
-        const SizedBox(height: 30),
+        SizedBox(height: 30),
         ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.black,
@@ -262,9 +252,9 @@ class _ResumeSectionState extends State<ResumeSection> {
           '''• Flutter Essential Training - LinkedIn Learning
 • Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate
 • Artificial Intelligence Fundamentals - IBM
-• Oracle Cloud Infrastructure 2025 Certified Generative AI Professional
-• AWS Academy Graduate - AWS Academy Cloud Architecting
-• AWS Academy Graduate - AWS Academy Cloud Foundations''',
+• Oracle Cloud Infrastructure 2025 Certified Generative AI - Oracle
+• Postman API Fundamentals - Postman
+''',
           style: TextStyle(
             fontSize: bodyFontSize,
             height: 1.6,
@@ -335,20 +325,25 @@ class QuoteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Icon(FontAwesomeIcons.quoteLeft, size: 18, color: Colors.black26),
-        const SizedBox(width: 10),
-        Expanded(
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontStyle: FontStyle.italic,
-              fontSize: 14,
-              color: Colors.black54,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                text,
+                textAlign: TextAlign.justify,
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ],
     );
