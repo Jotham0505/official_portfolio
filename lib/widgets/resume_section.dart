@@ -18,6 +18,8 @@ class _ResumeSectionState extends State<ResumeSection> {
       "https://www.linkedin.com/in/jothamemmanuelcheeran/";
   final String githubUrl = "https://github.com/Jotham0505";
   final String leetcodeUrl = "https://leetcode.com/u/Jotham_cheeran/";
+  final String instagramUrl =
+      "https://www.linkedin.com/in/jothamemmanuelcheeran/";
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
@@ -141,7 +143,7 @@ class _ResumeSectionState extends State<ResumeSection> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              onPressed: () => _openUrl(resumeUrl), // <--- open resume
+              onPressed: () => _openUrl(resumeUrl),
               icon: const Icon(Icons.download, color: Colors.white),
               label: const Text(
                 "Download Resume",

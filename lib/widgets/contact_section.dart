@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactSection extends StatefulWidget {
   const ContactSection({super.key});
@@ -8,6 +9,17 @@ class ContactSection extends StatefulWidget {
 }
 
 class _ContactSectionState extends State<ContactSection> {
+  final String resumeUrl =
+      "https://drive.google.com/file/d/1ZAMwV5ConAzMZffW3a0XDWxvO-Sxkpiy/view?usp=sharing";
+  final String certificateUrl =
+      "https://drive.google.com/file/d/1flnHFYNv6eHFfTBMuFzA0N9ZjAdDsCF9/view?usp=sharing";
+  final String linkedInUrl =
+      "https://www.linkedin.com/in/jothamemmanuelcheeran/";
+  final String githubUrl = "https://github.com/Jotham0505";
+  final String leetcodeUrl = "https://leetcode.com/u/Jotham_cheeran/";
+  final String instagramUrl =
+      "https://www.instagram.com/jothamemmanuelcheeran/"; // corrected to Instagram
+
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.width < 600;
@@ -51,7 +63,9 @@ class _ContactSectionState extends State<ContactSection> {
                     backgroundColor: Colors.black,
                     child: Center(
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await _launchUrl(linkedInUrl);
+                        },
                         icon: Icon(
                           size: isMobile ? 16 : 24,
                           Icons.arrow_forward_rounded,
@@ -162,18 +176,27 @@ class _ContactSectionState extends State<ContactSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _socialLink("LinkedIn", isMobile),
-        _socialLink("Instagram", isMobile),
+        GestureDetector(
+          onTap: () => _launchUrl(linkedInUrl),
+          child: _socialLink("LinkedIn", isMobile),
+        ),
+        GestureDetector(
+          onTap: () => _launchUrl(instagramUrl),
+          child: _socialLink("Instagram", isMobile),
+        ),
         Row(
           children: [
-            _socialText("Github", isMobile),
+            GestureDetector(
+              onTap: () => _launchUrl(githubUrl),
+              child: _socialText("Github", isMobile),
+            ),
             SizedBox(width: isMobile ? 8 : 16),
             CircleAvatar(
               backgroundColor: Colors.white,
               radius: isMobile ? 10 : 24,
               child: IconButton(
                 padding: EdgeInsets.zero,
-                onPressed: () {},
+                onPressed: () => _launchUrl(githubUrl),
                 icon: Icon(
                   Icons.north_east,
                   color: Colors.black,
@@ -235,7 +258,6 @@ class _ContactSectionState extends State<ContactSection> {
             fontWeight: FontWeight.w600,
           ),
         ),
-
         Text(
           value,
           style: TextStyle(
@@ -246,5 +268,12 @@ class _ContactSectionState extends State<ContactSection> {
         ),
       ],
     );
+  }
+
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
