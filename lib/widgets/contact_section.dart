@@ -18,7 +18,8 @@ class _ContactSectionState extends State<ContactSection> {
   final String githubUrl = "https://github.com/Jotham0505";
   final String leetcodeUrl = "https://leetcode.com/u/Jotham_cheeran/";
   final String instagramUrl =
-      "https://www.instagram.com/jothamemmanuelcheeran/"; // corrected to Instagram
+      "https://www.instagram.com/jothamemmanuelcheeran/";
+  final String email = "jothamemmanuelcheeran@gmail.com";
 
   @override
   Widget build(BuildContext context) {
