@@ -51,12 +51,12 @@ class _ResumeSectionState extends State<ResumeSection> {
           double bodyFontSize = isMobile ? 13 : 16;
 
           final List<Widget> slides = [
+            _buildLeetCodeSlide(subHeadingFontSize, bodyFontSize),
             _buildCertificationsSlide(
               subHeadingFontSize,
               bodyFontSize,
               bodyFontSize,
             ),
-            _buildLeetCodeSlide(subHeadingFontSize, bodyFontSize),
             _buildAchievementsSlide(subHeadingFontSize, bodyFontSize),
           ];
 
@@ -248,19 +248,12 @@ class _ResumeSectionState extends State<ResumeSection> {
           style: TextStyle(fontSize: headingFontSize, fontFamily: 'Aeonik'),
         ),
         const SizedBox(height: 16),
-        Text(
-          '''• Flutter Essential Training - LinkedIn Learning
+        Text('''• Flutter Essential Training - LinkedIn Learning
 • Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate
 • Artificial Intelligence Fundamentals - IBM
 • Oracle Cloud Infrastructure 2025 Certified Generative AI - Oracle
 • Postman API Fundamentals - Postman
-''',
-          style: TextStyle(
-            fontSize: bodyFontSize,
-            height: 1.6,
-            fontFamily: 'Aeonik',
-          ),
-        ),
+''', style: TextStyle(fontSize: 14, height: 1.5, fontFamily: 'Aeonik')),
       ],
     );
   }
@@ -271,19 +264,41 @@ class _ResumeSectionState extends State<ResumeSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "LeetCode Achievements",
+          "Internship Experience",
           style: TextStyle(fontSize: subHeadingFontSize, fontFamily: 'Aeonik'),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 13),
         Text(
-          '''• Solved 500+ problems across various difficulty levels.
-• Consistently ranked in the top 10% in weekly contests.
-• Earned the "Guardian" badge for solving daily challenges.
-• Proficient in algorithms, data structures, and dynamic programming.''',
+          "Flutter Development Intern at Peece Wellness Technologies Pvt. Ltd.",
           style: TextStyle(
-            fontSize: bodyFontSize,
-            height: 1.6,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            fontStyle: FontStyle.italic,
             fontFamily: 'Aeonik',
+          ),
+        ),
+        const SizedBox(height: 13),
+        Text(
+          '''• Restructured the Flutter app using the GETx pattern, improving modularity.
+• Designed UI and UX for Rewards and Profile, boosting navigation efficiency.
+• Integrated Google Places API, reducing location search latency.
+• Improved in-app reviews, sharing, and asset handling, raising referrals and engagement.''',
+          style: TextStyle(fontSize: 14, height: 1.5, fontFamily: 'Aeonik'),
+        ),
+        const SizedBox(height: 16),
+        ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.grey[800],
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          onPressed: () {},
+          icon: const Icon(Icons.download, color: Colors.white),
+          label: const Text(
+            "Download Certificate",
+            style: TextStyle(color: Colors.white, fontSize: 14),
           ),
         ),
       ],
