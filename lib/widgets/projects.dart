@@ -31,7 +31,7 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
     {
       "title": "Perplex - Flutter RAG App with FastAPI & Google Gemini",
       "details": "Details about web design projects here.",
-      "images": ["assets/images/logo.png", "assets/images/logo.png"],
+      "images": ["assets/images/perplex1.png", "assets/images/perplex2.png"],
     },
     {
       "title": "Insigno - Inclusive Learning App",
@@ -116,8 +116,6 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.width < 600;
     final double headingSize = isMobile ? 40 : 64;
-    final double bodySize = isMobile ? 16 : 16;
-    final double gapBetween = isMobile ? 20 : 40;
     return Container(
       color: Colors.black, // background
       child: Column(
@@ -204,6 +202,19 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
                                           final img =
                                               (project["images"]
                                                   as List<String>)[imgIndex];
+
+                                          final bool isPerplex =
+                                              project["title"] ==
+                                              "Perplex - Flutter RAG App with FastAPI & Google Gemini";
+
+                                          final double imgWidth = isPerplex
+                                              ? 800
+                                              : 260;
+
+                                          final BoxFit fitType = isPerplex
+                                              ? BoxFit.fitHeight
+                                              : BoxFit.cover;
+
                                           return Container(
                                             decoration: BoxDecoration(
                                               borderRadius:
@@ -222,8 +233,8 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
                                                   BorderRadius.circular(16),
                                               child: Image.asset(
                                                 img,
-                                                width: 260,
-                                                fit: BoxFit.cover,
+                                                width: imgWidth,
+                                                fit: fitType,
                                               ),
                                             ),
                                           );

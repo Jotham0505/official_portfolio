@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart'; // <-- add this
 
 class ResumeSection extends StatefulWidget {
   const ResumeSection({super.key});
@@ -9,7 +10,14 @@ class ResumeSection extends StatefulWidget {
 }
 
 class _ResumeSectionState extends State<ResumeSection> {
-  final String resumeUrl = "https://yourdomain.com/resume.pdf";
+  final String resumeUrl =
+      "https://drive.google.com/file/d/1ZAMwV5ConAzMZffW3a0XDWxvO-Sxkpiy/view?usp=sharing";
+  final String certificateUrl =
+      "https://drive.google.com/file/d/1flnHFYNv6eHFfTBMuFzA0N9ZjAdDsCF9/view?usp=sharing";
+  final String linkedInUrl =
+      "https://www.linkedin.com/in/jothamemmanuelcheeran/";
+  final String githubUrl = "https://github.com/Jotham0505";
+  final String leetcodeUrl = "https://leetcode.com/u/Jotham_cheeran/";
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
@@ -29,6 +37,16 @@ class _ResumeSectionState extends State<ResumeSection> {
     super.dispose();
   }
 
+  // helper to open URL in browser/external app
+  Future<void> _openUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final ismobile = MediaQuery.of(context).size.width < 600;
@@ -38,17 +56,16 @@ class _ResumeSectionState extends State<ResumeSection> {
         borderRadius: BorderRadius.circular(12),
         color: const Color(0xFFFAF9F6),
       ),
-
       padding: ismobile
-          ? EdgeInsets.all(1)
-          : EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+          ? const EdgeInsets.all(1)
+          : const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
       child: LayoutBuilder(
         builder: (context, constraints) {
           bool isMobile = constraints.maxWidth < 800;
 
           double headingFontSize = isMobile ? 32 : 64;
           double subHeadingFontSize = isMobile ? 20 : 48;
-          double bodyFontSize = isMobile ? 13 : 16;
+          double bodyFontSize = isMobile ? 12 : 14;
 
           final List<Widget> slides = [
             _buildLeetCodeSlide(subHeadingFontSize, bodyFontSize),
@@ -110,21 +127,48 @@ class _ResumeSectionState extends State<ResumeSection> {
           text:
               "My journey into tech began with a fascination for creating engaging digital experiences. Today, I specialize in building intuitive mobile applications and making them smarter with artificial intelligence. I enjoy solving complex challenges to create products that are not only powerful but also simple and enjoyable for everyone to use.I thrive in collaborative environments where I can work with a team to bring ambitious ideas to life.",
         ),
-        SizedBox(height: 30),
-        ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.black,
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+        const SizedBox(height: 30),
+        Row(
+          children: [
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 24,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              onPressed: () => _openUrl(resumeUrl), // <--- open resume
+              icon: const Icon(Icons.download, color: Colors.white),
+              label: const Text(
+                "Download Resume",
+                style: TextStyle(color: Colors.white, fontSize: 14),
+              ),
             ),
-          ),
-          onPressed: () {},
-          icon: const Icon(Icons.download, color: Colors.white),
-          label: const Text(
-            "Download Resume",
-            style: TextStyle(color: Colors.white, fontSize: 14),
-          ),
+            Spacer(),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 24,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              onPressed: () =>
+                  _openUrl(leetcodeUrl), // <--- open LeetCode profile
+              icon: Icon(FontAwesomeIcons.code, color: Colors.white),
+              label: const Text(
+                "LeetCode Profile",
+                style: TextStyle(color: Colors.white, fontSize: 14),
+              ),
+            ),
+          ],
         ),
       ],
     );
@@ -149,7 +193,6 @@ class _ResumeSectionState extends State<ResumeSection> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Scrollable content inside each slide
               SizedBox(
                 height: isMobile ? 300 : 275,
                 child: PageView(
@@ -294,7 +337,7 @@ class _ResumeSectionState extends State<ResumeSection> {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          onPressed: () {},
+          onPressed: () => _openUrl(certificateUrl), // <--- open certificate
           icon: const Icon(Icons.download, color: Colors.white),
           label: const Text(
             "Download Certificate",
@@ -346,7 +389,7 @@ class QuoteCard extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Expanded(
               child: Text(
                 text,
