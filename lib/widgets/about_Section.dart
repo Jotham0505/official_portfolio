@@ -75,12 +75,13 @@ class Aboutsection extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         Text(
-          "I’m Jotham Emmanuel Cheeran — a student developer from Vellore Institute of Technology, "
+          /*"I’m Jotham Emmanuel Cheeran — a student developer from Vellore Institute of Technology, "
           "crafting fast, accessible mobile apps with Flutter and powering them with intelligence through Python and applied ML. "
           "I design end-to-end experiences — from clean, elegant UI to measurable outcomes — often bridging Flutter with "
           "FastAPI or Flask backends to deliver full-stack solutions. I thrive in collaborative, team-driven environments "
           "where creativity meets precision. Recent work includes semantic search powered by embeddings and "
-          "iterative shipping with Git/GitHub workflows. Open to internships where impact, craft, and teamwork truly matter.",
+          "iterative shipping with Git/GitHub workflows. Open to internships where impact, craft, and teamwork truly matter."*/
+          """I’m Jotham Emmanuel Cheeran, an app developer from Vellore Institute of Technology, crafting fast, accessible mobile applications with Flutter and enhancing them with intelligence through Python and applied machine learning. I design end-to-end experiences, from clean, elegant UI to measurable outcomes, often bridging Flutter with FastAPI or Flask backends to deliver full-stack solutions. I thrive in collaborative, team-driven environments where creativity meets precision. Recent work demonstrates expertise in secure, scalable inventory management systems and AI-powered retrieval-augmented generation apps integrating Google Gemini. I’m open to opportunities where impact, craft, and teamwork truly matter.""",
           style: TextStyle(
             fontSize: bodySize,
             height: 1.6,
@@ -90,7 +91,7 @@ class Aboutsection extends StatelessWidget {
           softWrap: true,
           overflow: TextOverflow.visible,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 40),
         InkWell(
           onTap: () {
             // contact link

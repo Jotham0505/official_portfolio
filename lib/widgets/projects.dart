@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectAccordion extends StatefulWidget {
   const ProjectAccordion({super.key});
@@ -9,14 +10,22 @@ class ProjectAccordion extends StatefulWidget {
 
 class _ProjectAccordionState extends State<ProjectAccordion> {
   int? expandedIndex;
-
-  // Create one ScrollController per project
   late List<ScrollController> _controllers;
 
   final projects = [
     {
       "title": "Tea Factory Outlet Inventory App",
-      "details": "Details about branding projects here.",
+      "github": "https://github.com/Jotham0505/Sign_Translator",
+      "details":
+          """• Developed a full-stack inventory management app using Flutter, FastAPI, and MongoDB Atlas to manage stock and track daily sales.
+
+• Implemented secure JWT authentication with role-based access and RESTful APIs for inventory CRUD, sales tracking, and analytics.
+
+• Enabled real-time updates across 10+ product categories with push-based data synchronization between backend and mobile UI.
+
+• Designed a scalable architecture for future features such as supplier management and order processing, ensuring maintainability.
+
+• Delivered an intuitive Flutter UI tailored for managers and staff, improving usability and reducing training time.""",
       "images": [
         "assets/images/tea8.png",
         "assets/images/tea4.png",
@@ -30,11 +39,22 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
     },
     {
       "title": "Perplex - Flutter RAG App with FastAPI & Google Gemini",
-      "details": "Details about web design projects here.",
+      "github": "https://github.com/Jotham0505/perplex",
+      "details":
+          """• Built a cross-platform application (Flutter web + mobile) backed by FastAPI and Google Gemini to deliver source-grounded, AI-driven answers.
+
+• Engineered a Retrieval-Augmented Generation (RAG) pipeline that fetches, ranks, and injects external content into Gemini prompts for high-fidelity responses.
+
+• Developed RESTful APIs to orchestrate query handling, retrieval, and model inference, returning contextualized answers in <5 seconds per query.
+
+• Implemented source citation and traceability, enabling users to verify and explore the origins of AI-generated insights.
+
+• Optimized system architecture for scale and low latency, effectively “reading the web” in real time to provide credible, up-to-date information.""",
       "images": ["assets/images/perplex1.png", "assets/images/perplex2.png"],
     },
     {
       "title": "Insigno - Inclusive Learning App",
+      "github": "https://github.com/Jotham0505/Sign_Translator",
       "details":
           """• Developed a learning application for Gujarati, Mathematics, and Science with integrated Indian Sign Language interpretation for accessibility.
 
@@ -56,6 +76,7 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
     },
     {
       "title": "FinBase",
+      "github": "https://github.com/Jotham0505/finbase",
       "details":
           """• Dark mode UI with purple and teal highlights for a sleek, modern fintech feel.
 
@@ -79,10 +100,16 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
     },
   ];
 
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    // initialize a ScrollController for each project
     _controllers = List.generate(projects.length, (_) => ScrollController());
   }
 
@@ -116,8 +143,9 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.width < 600;
     final double headingSize = isMobile ? 40 : 64;
+
     return Container(
-      color: Colors.black, // background
+      color: Colors.black,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -142,13 +170,47 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
               return Column(
                 children: [
                   ListTile(
-                    title: Text(
-                      project["title"] as String,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                        fontFamily: 'Aeonik',
-                      ),
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            project["title"] as String,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontFamily: 'Aeonik',
+                            ),
+                          ),
+                        ),
+                        if (project["github"] != null)
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () =>
+                                  _launchUrl(project["github"] as String),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.link,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    "GitHub",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                     trailing: AnimatedRotation(
                       duration: const Duration(milliseconds: 300),
@@ -202,15 +264,12 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
                                           final img =
                                               (project["images"]
                                                   as List<String>)[imgIndex];
-
                                           final bool isPerplex =
                                               project["title"] ==
                                               "Perplex - Flutter RAG App with FastAPI & Google Gemini";
-
                                           final double imgWidth = isPerplex
                                               ? 800
                                               : 260;
-
                                           final BoxFit fitType = isPerplex
                                               ? BoxFit.fitHeight
                                               : BoxFit.cover;
@@ -241,7 +300,6 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
                                         },
                                       ),
                                     ),
-                                    // Left Floating Button
                                     Positioned(
                                       left: 0,
                                       top: 200,
@@ -256,7 +314,6 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
                                         ),
                                       ),
                                     ),
-                                    // Right Floating Button
                                     Positioned(
                                       right: 0,
                                       top: 200,
