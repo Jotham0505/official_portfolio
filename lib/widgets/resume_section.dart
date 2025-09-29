@@ -162,8 +162,7 @@ class _ResumeSectionState extends State<ResumeSection> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              onPressed: () =>
-                  _openUrl(leetcodeUrl), // <--- open LeetCode profile
+              onPressed: () => _openUrl(leetcodeUrl),
               icon: Icon(FontAwesomeIcons.code, color: Colors.white),
               label: const Text(
                 "LeetCode Profile",
@@ -185,9 +184,9 @@ class _ResumeSectionState extends State<ResumeSection> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           image: const DecorationImage(
-            image: AssetImage("assets/images/cardbg.png"),
+            image: AssetImage("assets/images/bg1.png"),
             fit: BoxFit.cover,
-            opacity: 0.15,
+            opacity: 0.2,
           ),
         ),
         child: Padding(

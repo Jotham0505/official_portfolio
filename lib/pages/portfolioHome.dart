@@ -256,7 +256,7 @@ class _PortfolioHomeState extends State<PortfolioHome>
                             child: Column(
                               children: [
                                 Text(
-                                  "Pixels. Code. Impact.",
+                                  "Vision. Code. Reality.",
                                   style: TextStyle(
                                     fontSize: isMobile ? 28 : 40,
                                     fontWeight: FontWeight.bold,
@@ -278,10 +278,10 @@ class _PortfolioHomeState extends State<PortfolioHome>
                             child: SizedBox(
                               width: isMobile ? screenWidth * 0.85 : 650,
                               child: Text(
-                                "As an AI and Flutter developer, I specialize in building smart, scalable, and beautifully designed applications that blend innovation with performance",
+                                "From elegant interfaces to reliable backends, delivering apps that perform.",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: isMobile ? 14 : 16,
+                                  fontSize: isMobile ? 14 : 24,
                                   color: Colors.grey[700],
                                   height: 1.6,
                                   fontFamily: 'Aeonik',
@@ -289,7 +289,7 @@ class _PortfolioHomeState extends State<PortfolioHome>
                               ),
                             ),
                           ),
-                          const SizedBox(height: 25),
+                          const SizedBox(height: 16),
 
                           FadeTransition(
                             opacity: Tween(begin: 0.4, end: 1.0).animate(

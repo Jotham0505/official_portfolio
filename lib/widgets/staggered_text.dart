@@ -12,7 +12,7 @@ class _AnimatedSubtitleState extends State<AnimatedSubtitle>
   late AnimationController _controller;
   late List<Animation<double>> _fadeAnimations;
 
-  final words = ["AI", "•", "Flutter", "•", "Creativity"];
+  final words = ["Flutter", "•", "FastAPI", "•", "Full-Stack"];
 
   @override
   void initState() {
