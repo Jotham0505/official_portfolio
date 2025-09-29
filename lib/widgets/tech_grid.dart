@@ -4,18 +4,18 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 class TechStackShowcase extends StatelessWidget {
   static const List<Map<String, String>> techStack = [
-    {"name": "Flutter", "icon": "assets/images/flutter.png"},
-    {"name": "FastAPI", "icon": "assets/images/fastapi.png"},
-    {"name": "Flask", "icon": "assets/images/flask.png"},
-    {"name": "Python", "icon": "assets/images/python.png"},
-    {"name": "Firebase", "icon": "assets/images/firebase.png"},
-    {"name": "Supabase", "icon": "assets/images/supabase.png"},
-    {"name": "GitHub", "icon": "assets/images/git.png"},
-    {"name": "TensorFlow Lite", "icon": "assets/images/tensorflow.png"},
-    {"name": "Java", "icon": "assets/images/java.png"},
-    {"name": "Dart", "icon": "assets/images/dart.png"},
-    {"name": "MongoDB", "icon": "assets/images/mongo.png"},
-    {"name": "AWS", "icon": "assets/images/aws.png"},
+    {"name": "Flutter", "icon": "assets/images/FLUTTER.png"},
+    {"name": "FastAPI", "icon": "assets/images/FASTAPI.png"},
+    {"name": "Flask", "icon": "assets/images/FLASK.png"},
+    {"name": "Python", "icon": "assets/images/Python.png"},
+    {"name": "Firebase", "icon": "assets/images/FIREBASE.png"},
+    {"name": "Supabase", "icon": "assets/images/SUPABASE.png"},
+    {"name": "GitHub", "icon": "assets/images/GITHUB.png"},
+    {"name": "TensorFlow Lite", "icon": "assets/images/VS CODE.png"},
+    {"name": "Java", "icon": "assets/images/JAVA.png"},
+    {"name": "Dart", "icon": "assets/images/DART.png"},
+    {"name": "MongoDB", "icon": "assets/images/MONGODB.png"},
+    {"name": "AWS", "icon": "assets/images/AWS.png"},
   ];
 
   const TechStackShowcase({super.key});
@@ -118,7 +118,7 @@ class _TechCardState extends State<_TechCard>
                   Flexible(
                     child: Image.asset(
                       widget.iconPath,
-                      height: 40,
+                      height: 80,
                       fit: BoxFit.contain,
                     ),
                   ),
