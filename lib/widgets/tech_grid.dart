@@ -115,6 +115,7 @@ class _TechCardState extends State<_TechCard>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const SizedBox(height: 10),
                   Flexible(
                     child: Image.asset(
                       widget.iconPath,
@@ -122,8 +123,8 @@ class _TechCardState extends State<_TechCard>
                       fit: BoxFit.contain,
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Text(
+                  //const SizedBox(height: 10),
+                  /*Text(
                     widget.name,
                     textAlign: TextAlign.center,
                     maxLines: 2,
@@ -135,7 +136,7 @@ class _TechCardState extends State<_TechCard>
                       letterSpacing: 0.8,
                       fontFamily: 'Aeonik',
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),
