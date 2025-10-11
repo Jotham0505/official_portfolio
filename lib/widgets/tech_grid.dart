@@ -6,8 +6,8 @@ class TechStackShowcase extends StatelessWidget {
   static const List<Map<String, String>> techStack = [
     {"name": "Flutter", "icon": "assets/images/FLUTTER.png"},
     {"name": "FastAPI", "icon": "assets/images/FASTAPI.png"},
-    {"name": "Flask", "icon": "assets/images/FLASK.png"},
-    {"name": "Python", "icon": "assets/images/Python.png"},
+    {"name": "Flask", "icon": "assets/images/POSTMAN.png"},
+    {"name": "Python", "icon": "assets/images/PYTHON.png"},
     {"name": "Firebase", "icon": "assets/images/FIREBASE.png"},
     {"name": "Supabase", "icon": "assets/images/SUPABASE.png"},
     {"name": "GitHub", "icon": "assets/images/GITHUB.png"},
@@ -119,7 +119,7 @@ class _TechCardState extends State<_TechCard>
                   Flexible(
                     child: Image.asset(
                       widget.iconPath,
-                      height: 80,
+                      height: 120,
                       fit: BoxFit.contain,
                     ),
                   ),
