@@ -195,14 +195,14 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
                                   Icon(
                                     Icons.link,
                                     size: 16,
-                                    color: Colors.white,
+                                    color: Colors.blue,
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
                                     "GitHub",
                                     style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white,
+                                      fontSize: 8,
+                                      color: Colors.blue,
                                       decoration: TextDecoration.underline,
                                     ),
                                   ),
