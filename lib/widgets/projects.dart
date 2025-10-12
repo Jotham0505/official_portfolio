@@ -50,7 +50,11 @@ class _ProjectAccordionState extends State<ProjectAccordion> {
 • Implemented source citation and traceability, enabling users to verify and explore the origins of AI-generated insights.
 
 • Optimized system architecture for scale and low latency, effectively “reading the web” in real time to provide credible, up-to-date information.""",
-      "images": ["assets/images/perplex1.png", "assets/images/perplex2.png"],
+      "images": [
+        "assets/images/perplex1.png",
+        "assets/images/perplex2.png",
+        "assets/images/perplex3.png",
+      ],
     },
     {
       "title": "Insigno - Inclusive Learning App",
